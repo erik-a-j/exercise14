@@ -38,6 +38,16 @@ struct Settings {
 
 int get_random_number(Settings& settings);
 
+/**
+ * @brief 
+ * 
+ * @param settings 
+ * @param randNumb 
+ * @return int 
+ */
+int guess(Settings& settings, int randNumb);
+
+
 } // namespace NumberGuess
 
 #endif /*NUMBERGUESS_H*/
