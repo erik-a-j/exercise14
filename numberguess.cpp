@@ -16,21 +16,21 @@ int NumberGuess::guess(NumberGuess::Settings& settings, int randNumb)
 
     do
     {
-        std::cout << "Number: ";
+        std::cout << "[" << settings.life << "]Number: ";
         std::cin >> guessNumber;
 
-        if(std::cin.good() && guessNumber > 0 && guessNumber <= settings.maxnum)
+        if(std::cin.bad() || guessNumber < 0 || guessNumber > settings.maxnum)
         {
             std::cout << "Make sure the number is valid" << std::endl;
         }
 
-    }while(std::cin.good() && guessNumber > 0 && guessNumber <= settings.maxnum);
+    }while(std::cin.bad() || guessNumber < 0 || guessNumber > settings.maxnum);
 
     if(!(guessNumber == randNumb))
     {
         settings.life = settings.life - 1;
     }
 
-    return randNumb - guessNumber; 
+    return guessNumber - randNumb; 
     
 }
