@@ -1,6 +1,6 @@
 #include "numberguess.hpp"
-#include <random>
 #include <iostream>
+#include <random>
 
 int NumberGuess::get_random_number(NumberGuess::Settings& settings)
 {
@@ -19,41 +19,38 @@ int NumberGuess::guess(NumberGuess::Settings& settings, int randNumb)
         std::cout << "[" << settings.life << "]Number: ";
         std::cin >> guessNumber;
 
-        if(std::cin.bad() || guessNumber < 0 || guessNumber > settings.maxnum)
+        if (std::cin.bad() || guessNumber < 0 || guessNumber > settings.maxnum)
         {
             std::cout << "Make sure the number is valid" << std::endl;
         }
 
-    }while(std::cin.bad() || guessNumber < 0 || guessNumber > settings.maxnum);
+    } while (std::cin.bad() || guessNumber < 0 || guessNumber > settings.maxnum);
 
-    if(!(guessNumber == randNumb))
+    if (!(guessNumber == randNumb))
     {
         settings.life = settings.life - 1;
     }
 
-    return guessNumber - randNumb; 
-    
+    return guessNumber - randNumb;
 }
 
 bool NumberGuess::playGame(NumberGuess::Settings& settings, int randNumb)
 {
-    while(settings.life != 0)
+    while (settings.life != 0)
     {
         int value = NumberGuess::guess(settings, randNumb);
-        if(value < 0)
+        if (value < 0)
         {
-            std::cout<<"Guess higher"<<std::endl;
+            std::cout << "Guess higher" << std::endl;
         }
         else if (value > 0)
         {
-            std::cout<<"Guess lower"<<std::endl;
-
+            std::cout << "Guess lower" << std::endl;
         }
-        else if(value == 0)
+        else if (value == 0)
         {
-            break;
+            return true;
         }
-
     }
-
+    return false;
 }

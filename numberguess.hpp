@@ -16,7 +16,9 @@ struct Settings {
     {
         set(preset);
     }
-    Settings(int _life, int _maxnum) : life(_life), maxnum(_maxnum) {}
+    Settings(int _life, int _maxnum) : life(_life), maxnum(_maxnum)
+    {
+    }
     void set(Preset preset)
     {
         if (preset == Preset::Easy)
@@ -60,6 +62,7 @@ int get_random_number(Settings& settings);
      * @return int
      */
 int guess(Settings& settings, int randNumb);
+bool playGame(Settings& settings, int randNumb);
 
 class Game
 {
@@ -68,12 +71,34 @@ class Game
     {
         m_secret = get_random_number(m_settings);
     }
-    Game(Settings::Preset preset) : Game(Settings(preset)) {}
-    Game(int life, int maxnum) : Game(Settings(life, maxnum)) {}
+    Game(Settings::Preset preset) : Game(Settings(preset))
+    {
+    }
+    Game(int life, int maxnum) : Game(Settings(life, maxnum))
+    {
+    }
 
     int guess()
     {
         return NumberGuess::guess(m_settings, m_secret);
+    }
+
+    int life() const
+    {
+        return m_settings.life;
+    }
+    const Settings& settings() const
+    {
+        return m_settings;
+    }
+    int cheat() const
+    {
+        return m_secret;
+    }
+
+    bool playGame()
+    {
+        return NumberGuess::playGame(m_settings, m_secret);
     }
 
   private:
