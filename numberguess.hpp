@@ -14,9 +14,12 @@ struct Settings {
 
     Settings(Preset preset)
     {
-        use_preset(preset);
+        set(preset);
     }
-    void use_preset(Preset preset)
+    Settings(int _life, int _maxnum) : life(_life), maxnum(_maxnum)
+    {
+    }
+    void set(Preset preset)
     {
         if (preset == Preset::Easy)
         {
@@ -33,6 +36,11 @@ struct Settings {
             life = 5;
             maxnum = 250;
         }
+    }
+    void set(int _life, int _maxnum)
+    {
+        life = _life;
+        maxnum = _maxnum;
     }
 };
 
@@ -54,7 +62,6 @@ int get_random_number(Settings& settings);
  * @return int 
  */
 int guess(Settings& settings, int randNumb);
-
 
 } // namespace NumberGuess
 
