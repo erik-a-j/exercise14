@@ -34,3 +34,26 @@ int NumberGuess::guess(NumberGuess::Settings& settings, int randNumb)
     return guessNumber - randNumb; 
     
 }
+
+bool NumberGuess::playGame(NumberGuess::Settings& settings, int randNumb)
+{
+    while(settings.life != 0)
+    {
+        int value = NumberGuess::guess(settings, randNumb);
+        if(value < 0)
+        {
+            std::cout<<"Guess higher"<<std::endl;
+        }
+        else if (value > 0)
+        {
+            std::cout<<"Guess lower"<<std::endl;
+
+        }
+        else if(value == 0)
+        {
+            break;
+        }
+
+    }
+
+}
