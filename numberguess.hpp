@@ -16,9 +16,7 @@ struct Settings {
     {
         set(preset);
     }
-    Settings(int _life, int _maxnum) : life(_life), maxnum(_maxnum)
-    {
-    }
+    Settings(int _life, int _maxnum) : life(_life), maxnum(_maxnum) {}
     void set(Preset preset)
     {
         if (preset == Preset::Easy)
