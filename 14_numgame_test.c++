@@ -10,7 +10,8 @@ bool win_game() {
 
     std::cout << "Do you want to play again (y/n): ";
     std::cin >> play;
-    if (play == 'n') {
+    if (play == 'n')
+    {
         QUITED;
         return false;
     }
@@ -25,7 +26,8 @@ bool lose_game() {
 
     std::cout << "Do you want to play again (y/n): ";
     std::cin >> play;
-    if (play == 'n') {
+    if (play == 'n')
+    {
         QUITED;
         return false;
     }
@@ -39,7 +41,7 @@ static void game_start() {
 }
 
 static void game_difficulty() {
-    int level = {0};
+    int level = { 0 };
     std::cout << "\x1b[38;5;129m\n====== SELECT DIFFICULTY ====== \x1b[m\n";
     std::cout << "\x1b[38;5;46m1)\x1b[m Easy: \n";
     std::cout << "\x1b[38;5;46m2)\x1b[m Medium: \n";
@@ -52,8 +54,9 @@ static void game_difficulty() {
 
 int main(void) {
     NumberGuess::Game game(NumberGuess::Settings::Preset::Easy);
-    while (1) {
-        int meny = {0};
+    while (1)
+    {
+        int meny = { 0 };
         std::cout << "\x1b[38;5;129m\n===============================\n";
         std::cout << "========== GAME MENY ==========\n";
         ;
@@ -65,18 +68,21 @@ int main(void) {
 
         std::cin >> meny;
 
-        switch (meny) {
-            case 1:
-                game_start();
-                if (win_game() == false) {
-                    return 0;
-                }
-                break;
+        switch (meny)
+        {
+        case 1:
+            game_start();
+            if (win_game() == false)
+            {
+                return 0;
+            }
+            break;
 
-            case 2: game_difficulty(); break;
+        case 2: game_difficulty();
+            break;
 
-            case 3: QUITED; return 0;
-            default: break;
+        case 3: QUITED; return 0;
+        default: break;
         }
     }
     return 0;
