@@ -14,7 +14,6 @@ TESTOBJ = $(patsubst %.c++,$(OBJDIR)/%.o,$(TESTSRC))
 TESTBIN = a.out
 
 
-
 .PHONY: all module test clean
 all: test
 module: $(MODULEOBJ)

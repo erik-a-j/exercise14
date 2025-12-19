@@ -1,9 +1,8 @@
 #include <iostream>
-
+#include "numberguess.hpp"
 #define QUITED std::cout << "\x1b[38;5;124m\nGame quited\x1b[m\n\n"
 
-bool win_game()
-{
+bool win_game() {
     char play = 'n';
     std::cout << "\x1b[38;5;46m\n================================\n";
     std::cout << "=========== CONGRATS ===========\n";
@@ -11,16 +10,14 @@ bool win_game()
 
     std::cout << "Do you want to play again (y/n): ";
     std::cin >> play;
-    if (play == 'n')
-    {
+    if (play == 'n') {
         QUITED;
         return false;
     }
     return true;
 }
 
-bool lose_game()
-{
+bool lose_game() {
     char play = 'n';
     std::cout << "\x1b[38;5;124m\n================================\n";
     std::cout << "=========== YOU LOSE ===========\n";
@@ -28,24 +25,21 @@ bool lose_game()
 
     std::cout << "Do you want to play again (y/n): ";
     std::cin >> play;
-    if (play == 'n')
-    {
+    if (play == 'n') {
         QUITED;
         return false;
     }
     return true;
 }
 
-static void game_start()
-{
+static void game_start() {
     std::cout << "\x1b[38;5;129m\n================================\n";
     std::cout << "========== GAME START ==========\n";
     std::cout << "================================\x1b[m\n";
 }
 
-static void game_difficulty()
-{
-    int level = { 0 };
+static void game_difficulty() {
+    int level = {0};
     std::cout << "\x1b[38;5;129m\n====== SELECT DIFFICULTY ====== \x1b[m\n";
     std::cout << "\x1b[38;5;46m1)\x1b[m Easy: \n";
     std::cout << "\x1b[38;5;46m2)\x1b[m Medium: \n";
@@ -56,13 +50,12 @@ static void game_difficulty()
     std::cin >> level;
 }
 
-int main(void)
-{
-    while (1)
-    {
-        int meny = { 0 };
+int main(void) {
+    while (1) {
+        int meny = {0};
         std::cout << "\x1b[38;5;129m\n===============================\n";
-        std::cout << "========== GAME MENY ==========\n";;
+        std::cout << "========== GAME MENY ==========\n";
+        ;
         std::cout << "===============================\x1b[m\n";
         std::cout << "\x1b[38;5;46m1)\x1b[m Start game: \n";
         std::cout << "\x1b[38;5;46m2)\x1b[m Set difficuly: \n";
@@ -71,27 +64,18 @@ int main(void)
 
         std::cin >> meny;
 
+        switch (meny) {
+            case 1:
+                game_start();
+                if (win_game() == false) {
+                    return 0;
+                }
+                break;
 
-        switch (meny)
-        {
-        case 1:
-            game_start();
-            if (win_game() == false)
-            {
-                return 0;
-            }
-            break;
+            case 2: game_difficulty(); break;
 
-        case 2:
-            game_difficulty();
-
-            break;
-
-        case 3:
-            QUITED;
-            return 0;
-        default:
-            break;
+            case 3: QUITED; return 0;
+            default: break;
         }
     }
     return 0;
