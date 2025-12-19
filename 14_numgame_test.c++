@@ -51,6 +51,7 @@ static void game_difficulty() {
 }
 
 int main(void) {
+    NumberGuess::Game game(NumberGuess::Settings::Preset::Easy);
     while (1) {
         int meny = {0};
         std::cout << "\x1b[38;5;129m\n===============================\n";
