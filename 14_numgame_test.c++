@@ -1,5 +1,7 @@
 #include <iostream>
 
+#define QUITED std::cout << "\x1b[38;5;124m\nGame quited\x1b[m\n\n"
+
 bool win_game()
 {
     char play = 'n';
@@ -11,6 +13,7 @@ bool win_game()
     std::cin >> play;
     if (play == 'n')
     {
+        QUITED;
         return false;
     }
     return true;
@@ -21,12 +24,13 @@ bool lose_game()
     char play = 'n';
     std::cout << "\x1b[38;5;124m\n================================\n";
     std::cout << "=========== YOU LOSE ===========\n";
-    std::cout << "================================\x1b[m\n";
+    std::cout << "================================\x1b[m\n\n";
 
     std::cout << "Do you want to play again (y/n): ";
     std::cin >> play;
     if (play == 'n')
     {
+        QUITED;
         return false;
     }
     return true;
@@ -80,10 +84,11 @@ int main(void)
 
         case 2:
             game_difficulty();
+
             break;
 
         case 3:
-            std::cout << "\x1b[38;5;124m\nGame quited\x1b[m\n\n";
+            QUITED;
             return 0;
         default:
             break;
